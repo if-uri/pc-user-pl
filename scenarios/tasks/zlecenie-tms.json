@@ -1,0 +1,6 @@
+{"id":"zlecenie-tms","tytul":"Przenieś zlecenie transportowe do TMS","harmonogram":"on-nowe-zlecenie","flow":[
+ {"uri":"mail://biuro/wiadomosc/query/read","note":"odczytaj zlecenie z maila/PDF"},
+ {"uri":"format://rekord/query/normalize","payload":{"pola":["adres","termin"]},"note":"znormalizuj adresy i terminy"},
+ {"uri":"app://pc1/desktop/command/launch","payload":{"app":"chromium","url":"https://tms.jan.pl"},"note":"otwórz TMS"},
+ {"uri":"tms://zlecenia/command/create","payload":{"pola":["trasa","terminy","kontrahent"]},"note":"przepisz zlecenie"},
+ {"uri":"log://cybermysz/zlecenie-tms/command/write","payload":{"efekt":"zlecenie w TMS"},"note":"zapisz wynik"}]}

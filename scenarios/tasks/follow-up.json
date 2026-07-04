@@ -1,0 +1,6 @@
+{"id":"follow-up","tytul":"Przygotuj follow-up do klienta","harmonogram":"codziennie 10:00","flow":[
+ {"uri":"app://pc1/desktop/command/launch","payload":{"app":"chromium","url":"https://crm.jan.pl"},"note":"otwórz CRM"},
+ {"uri":"crm://klienci/query/ostatni-kontakt","note":"sprawdź status ostatniej rozmowy"},
+ {"uri":"notes://rozmowa/query/extract","note":"wyciągnij ustalenia z notatki (ekstraktywnie)"},
+ {"uri":"mail://biuro/wiadomosc/command/reply","payload":{"typ":"follow-up"},"note":"przygotuj wiadomość do wysłania"},
+ {"uri":"log://cybermysz/follow-up/command/write","payload":{"efekt":"follow-up gotowy"},"note":"zapisz wynik"}]}

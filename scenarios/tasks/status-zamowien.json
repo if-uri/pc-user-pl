@@ -1,0 +1,5 @@
+{"id":"status-zamowien","tytul":"Sprawdź status przesyłek i zamówień","harmonogram":"co 1 godz","flow":[
+ {"uri":"app://pc1/desktop/command/launch","payload":{"app":"chromium","url":"https://sklep.ifuri.com"},"note":"otwórz panel zamówień"},
+ {"uri":"shop://cybermysz/order/query/status","payload":{"zrodlo":"panel"},"note":"pobierz statusy zamówień"},
+ {"uri":"app://pc1/desktop/command/launch","payload":{"app":"chromium","url":"https://inpost.pl/sledzenie"},"note":"sprawdź status przesyłki (kurier)"},
+ {"uri":"log://cybermysz/status-zamowien/command/write","payload":{"efekt":"statusy zebrane, notatka gotowa"},"note":"zapisz notatkę"}]}

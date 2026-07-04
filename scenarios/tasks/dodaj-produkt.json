@@ -1,0 +1,6 @@
+{"id":"dodaj-produkt","tytul":"Uzupełnij dane produktu w sklepie","harmonogram":"on-nowy-produkt","flow":[
+ {"uri":"app://pc1/desktop/command/launch","payload":{"app":"libreoffice-calc","doc":"produkty.ods"},"note":"otwórz arkusz z danymi produktów"},
+ {"uri":"format://rekord/query/normalize","payload":{"pola":["cena","sku"]},"note":"znormalizuj ceny/SKU"},
+ {"uri":"app://pc1/desktop/command/launch","payload":{"app":"chromium","url":"https://sklep.ifuri.com/admin"},"note":"otwórz panel sklepu"},
+ {"uri":"shop://cybermysz/produkt/command/upsert","payload":{"pola":["nazwa","sku","cena","opis"]},"note":"wpisz dane produktu"},
+ {"uri":"log://cybermysz/dodaj-produkt/command/write","payload":{"efekt":"produkt dodany do sklepu"},"note":"zapisz wynik"}]}

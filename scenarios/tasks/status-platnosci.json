@@ -1,0 +1,5 @@
+{"id":"status-platnosci","tytul":"Sprawdź status płatności","harmonogram":"codziennie 9:00","flow":[
+ {"uri":"app://pc1/desktop/command/launch","payload":{"app":"chromium","url":"https://erp.jan.pl/platnosci"},"note":"otwórz listę faktur"},
+ {"uri":"recon://ksiegowosc/faktury/query/reconcile","note":"porównaj faktury ze statusem płatności (wykryj niezapłacone)"},
+ {"uri":"priorytet://kolejka/query/order","payload":{"kryterium":"termin"},"note":"uszereguj pozycje do kontaktu"},
+ {"uri":"log://cybermysz/status-platnosci/command/write","payload":{"efekt":"lista należności do kontaktu"},"note":"zapisz wynik"}]}
