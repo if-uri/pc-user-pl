@@ -1,0 +1,15 @@
+{
+  "id": "raport-dzienny",
+  "tytul": "Zbierz dane do raportu dziennego",
+  "harmonogram": "codziennie 8:00",
+  "flow": [
+    {"uri": "app://pc1/desktop/command/launch",  "payload": {"app": "chromium", "url": "https://crm.jan.pl"}, "note": "otwórz CRM"},
+    {"uri": "kvm://pc1/screen/query/capture",    "note": "odczytaj liczby sprzedaży"},
+    {"uri": "app://pc1/desktop/command/launch",  "payload": {"app": "chromium", "url": "https://sklep.jan.pl"}, "note": "otwórz panel sklepu"},
+    {"uri": "kvm://pc1/screen/query/capture",    "note": "odczytaj liczbę zamówień"},
+    {"uri": "app://pc1/desktop/command/launch",  "payload": {"app": "libreoffice-calc", "doc": "raport-dzienny.ods"}, "note": "otwórz arkusz raportu"},
+    {"uri": "kvm://pc1/input/command/type",      "payload": {"cel": "arkusz raportu"}, "note": "wpisz wartości w stałym formacie"},
+    {"uri": "mail://biuro/wiadomosc/command/reply", "payload": {"to": "zespol@firma.pl", "temat": "Raport dzienny"}, "note": "wyślij raport zespołowi"},
+    {"uri": "log://cybermysz/raport-dzienny/command/write", "payload": {"efekt": "raport gotowy w stałym formacie"}, "note": "zapisz wynik"}
+  ]
+}

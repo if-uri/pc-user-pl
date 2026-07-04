@@ -1,0 +1,6 @@
+[Desktop Entry]
+Type=Application
+Name=KSeF — e-Faktury
+Exec=firefox-esr https://ksef.mf.gov.pl
+Icon=text-x-generic
+Categories=Office;

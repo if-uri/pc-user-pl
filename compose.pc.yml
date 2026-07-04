@@ -14,6 +14,7 @@ services:
       TWIN_USER: "Jan Kowalski"
     volumes:
       - ../net-user-pl/ca/out:/opt/ca:ro
+      - ./scenarios:/opt/cybermysz/scenarios:ro   # katalog zadań CyberMysz (agent + scenariusze)
     ports:
       - "${PC1_NOVNC_PORT:-26080}:6080"
       - "${PC1_NODE_PORT:-28765}:8765"

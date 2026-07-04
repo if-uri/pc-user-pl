@@ -1,0 +1,6 @@
+[Desktop Entry]
+Type=Application
+Name=ERP/Płatnik (Windows przez RDP)
+Exec=remmina -c rdp://windows-erp
+Icon=preferences-system-network
+Categories=Office;

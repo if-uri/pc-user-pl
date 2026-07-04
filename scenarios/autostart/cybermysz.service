@@ -1,0 +1,22 @@
+# CyberMysz — autonomiczny agent zadań biurowych (systemd, użytkownik).
+# Instalacja:  ./install.sh   (albo ręcznie: kopiuje do ~/.config/systemd/user/)
+# Włączenie:   systemctl --user enable --now cybermysz.service
+# Podgląd:     journalctl --user -u cybermysz -f
+[Unit]
+Description=CyberMysz — autonomiczny agent zadań biurowych
+After=graphical-session.target
+Wants=graphical-session.target
+
+[Service]
+Type=simple
+# katalog scenariuszy podstawiany przez install.sh (%h = katalog domowy)
+WorkingDirectory=%h/.cybermysz/scenarios
+ExecStart=/usr/bin/python3 %h/.cybermysz/scenarios/run.py
+# domyślnie plan-only; ustaw CYBERMYSZ_EXECUTE=1 gdy wdrożenie zatwierdzone
+Environment=CYBERMYSZ_EXECUTE=0
+Environment=URIRUN_NODE=http://127.0.0.1:8765
+Restart=on-failure
+RestartSec=10
+
+[Install]
+WantedBy=default.target

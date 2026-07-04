@@ -1,0 +1,6 @@
+[Desktop Entry]
+Type=Application
+Name=Panel sklepu
+Exec=chromium --no-sandbox --app=https://sklep.ifuri.com
+Icon=applications-shop
+Categories=Office;
