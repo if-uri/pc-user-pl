@@ -1,0 +1,26 @@
+# pc-user-pl — Jan Kowalski's PC joined to the virtual internet (netpl).
+# Needs net-user-pl up first (it creates the `netpl` network and the CA).
+services:
+  desktop:
+    build: ./desktop
+    image: pc-user-pl-desktop:local
+    environment:
+      NODE_NAME: pc1
+      TWIN_USER: "Jan Kowalski"
+    volumes:
+      - ../net-user-pl/ca/out:/opt/ca:ro
+    ports:
+      - "${PC1_NOVNC_PORT:-26080}:6080"
+      - "${PC1_NODE_PORT:-28765}:8765"
+    shm_size: 1gb
+    networks: [netpl]
+    healthcheck:
+      test: ["CMD", "curl", "-sf", "http://localhost:8765/health"]
+      interval: 5s
+      timeout: 3s
+      retries: 30
+
+networks:
+  netpl:
+    external: true
+    name: netpl
