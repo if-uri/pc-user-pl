@@ -4,6 +4,11 @@ services:
   desktop:
     build: ./desktop
     image: pc-user-pl-desktop:local
+    # docker-init (tini) as pid 1 reaps children: apps the mesh launches and later
+    # kills (app://…/launch -> proc/command/kill, e.g. a saga rollback) are reaped
+    # instead of piling up as <defunct> zombies. Without it the urirun node is pid 1
+    # and never reaps, so pgrep counts stale zombies.
+    init: true
     environment:
       NODE_NAME: pc1
       TWIN_USER: "Jan Kowalski"
