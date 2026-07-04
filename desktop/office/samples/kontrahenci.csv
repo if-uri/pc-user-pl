@@ -1,0 +1,6 @@
+Lp.;Nazwa;NIP;Miasto;Osoba kontaktowa;E-mail;Telefon;Status
+1;ACME Polska Sp. z o.o.;5252248481;Warszawa;Anna Nowak;a.nowak@acme.example;+48 601 111 111;klient
+2;Biuro Rachunkowe Bilans s.c.;7010000000;Kraków;Piotr Wiśniewski;biuro@bilans.example;+48 602 222 222;dostawca
+3;Hurtownia Papiernicza PapirEx;9540000000;Katowice;Maria Zielińska;zamowienia@papirex.example;+48 603 333 333;dostawca
+4;Software House Kodex Sp. z o.o.;5210000000;Wrocław;Tomasz Lis;kontakt@kodex.example;+48 604 444 444;partner
+5;Gmina Miejska (e-Urząd);;Warszawa;—;urzad@gov.pl;—;urząd

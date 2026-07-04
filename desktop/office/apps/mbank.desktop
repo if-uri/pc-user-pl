@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=mBank — bankowość firmowa
+Comment=Bank Jana Kowalskiego w wirtualnym internecie (netpl)
+Exec=chromium --no-sandbox --app=https://mbank.pl
+Icon=chromium
+Categories=Network;Finance;Office;

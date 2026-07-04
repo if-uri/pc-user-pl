@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=Poczta firmowa (webmail)
+Comment=Skrzynka poczta.jan.pl w wirtualnym internecie
+Exec=chromium --no-sandbox --app=https://poczta.jan.pl
+Icon=chromium
+Categories=Network;Email;Office;

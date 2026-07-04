@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=e-Urząd (gov.pl)
+Comment=Sprawy urzędowe firmy — ePUAP/KSeF w bliźniaku to warstwa web
+Exec=chromium --no-sandbox --app=https://gov.pl
+Icon=chromium
+Categories=Network;Office;

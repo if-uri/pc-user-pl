@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=Telefon Jana (podgląd)
+Comment=Ekran telefonu z mobile-user-pl (phone.jan.pl)
+Exec=chromium --no-sandbox --app=https://phone.jan.pl
+Icon=chromium
+Categories=Network;Utility;

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- pc-user-pl: right-click desktop menu for the human watching over noVNC.
+     Mirrors what the mesh can launch via app://pc1/desktop/command/launch. -->
+<openbox_menu xmlns="http://openbox.org/3.4/menu">
+  <menu id="menu-biuro" label="Biuro">
+    <item label="LibreOffice Writer"><action name="Execute"><command>libreoffice --writer</command></action></item>
+    <item label="LibreOffice Calc"><action name="Execute"><command>libreoffice --calc</command></action></item>
+    <item label="LibreOffice Impress"><action name="Execute"><command>libreoffice --impress</command></action></item>
+    <item label="Thunderbird (poczta)"><action name="Execute"><command>thunderbird</command></action></item>
+    <item label="GnuCash (księgowość)"><action name="Execute"><command>gnucash</command></action></item>
+    <item label="Dokumenty (PDF)"><action name="Execute"><command>evince</command></action></item>
+  </menu>
+  <menu id="menu-firma" label="Firma online">
+    <item label="mBank — bankowość"><action name="Execute"><command>chromium --no-sandbox --app=https://mbank.pl</command></action></item>
+    <item label="Poczta firmowa"><action name="Execute"><command>chromium --no-sandbox --app=https://poczta.jan.pl</command></action></item>
+    <item label="e-Urząd (gov.pl)"><action name="Execute"><command>chromium --no-sandbox --app=https://gov.pl</command></action></item>
+    <item label="Telefon Jana"><action name="Execute"><command>chromium --no-sandbox --app=https://phone.jan.pl</command></action></item>
+  </menu>
+  <menu id="menu-narzedzia" label="Narzędzia">
+    <item label="Pliki (PCManFM)"><action name="Execute"><command>pcmanfm /root/Dokumenty</command></action></item>
+    <item label="Notatnik (Mousepad)"><action name="Execute"><command>mousepad</command></action></item>
+    <item label="Kalkulator"><action name="Execute"><command>galculator</command></action></item>
+    <item label="Archiwa (Xarchiver)"><action name="Execute"><command>xarchiver</command></action></item>
+    <item label="GIMP (grafika)"><action name="Execute"><command>gimp</command></action></item>
+    <item label="Terminal"><action name="Execute"><command>xterm</command></action></item>
+  </menu>
+  <menu id="root-menu" label="Pulpit Jana">
+    <menu id="menu-biuro"/>
+    <menu id="menu-firma"/>
+    <menu id="menu-narzedzia"/>
+    <separator/>
+    <item label="Przeglądarka (Chromium)"><action name="Execute"><command>chromium --no-sandbox</command></action></item>
+  </menu>
+</openbox_menu>

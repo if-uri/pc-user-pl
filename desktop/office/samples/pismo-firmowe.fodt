@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Wzór pisma firmowego Jana — płaski ODF (otwiera LibreOffice Writer). -->
+<office:document
+    xmlns:office="urn:oasis:names:tc:opendocument:xmlns:office:1.0"
+    xmlns:text="urn:oasis:names:tc:opendocument:xmlns:text:1.0"
+    office:version="1.2"
+    office:mimetype="application/vnd.oasis.opendocument.text">
+  <office:body>
+    <office:text>
+      <text:p>Jan Kowalski Usługi IT</text:p>
+      <text:p>ul. Przykładowa 1, 00-001 Warszawa</text:p>
+      <text:p>NIP 5250000000 · tel. +48 600 000 000 · jan@poczta.jan.pl</text:p>
+      <text:p/>
+      <text:p>Warszawa, 4 lipca 2026 r.</text:p>
+      <text:p/>
+      <text:p>ACME Polska Sp. z o.o.</text:p>
+      <text:p>ul. Testowa 5, 00-002 Warszawa</text:p>
+      <text:p/>
+      <text:p>Dotyczy: potwierdzenie realizacji zamówienia ZAM/2026/07/015</text:p>
+      <text:p/>
+      <text:p>Szanowni Państwo,</text:p>
+      <text:p/>
+      <text:p>uprzejmie potwierdzam przyjęcie do realizacji zamówienia na wdrożenie
+systemu obiegu dokumentów wraz z miesięczną opieką serwisową. Prace rozpoczną się
+7 lipca 2026 r.; przewidywany termin zakończenia wdrożenia to 18 lipca 2026 r.</text:p>
+      <text:p/>
+      <text:p>Faktura VAT (FV/2026/07/001) zostanie wystawiona po podpisaniu protokołu
+odbioru i przesłana na Państwa adres e-mail. Płatność przelewem w terminie 14 dni.</text:p>
+      <text:p/>
+      <text:p>Z poważaniem,</text:p>
+      <text:p>Jan Kowalski</text:p>
+    </office:text>
+  </office:body>
+</office:document>
