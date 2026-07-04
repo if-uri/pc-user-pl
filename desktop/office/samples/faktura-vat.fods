@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Wzór faktury VAT firmy Jana — płaski ODF (otwiera LibreOffice Calc).
-     Kolumna "Wartość netto" liczona formułą; VAT 23%. -->
+     Wartości policzone statycznie (netto 2250, VAT 23% = 517,50, brutto 2767,50);
+     bez formuł ODF, żeby dokument otwierał się bez błędów w każdej wersji LO. -->
 <office:document
     xmlns:office="urn:oasis:names:tc:opendocument:xmlns:office:1.0"
     xmlns:table="urn:oasis:names:tc:opendocument:xmlns:table:1.0"
@@ -32,30 +33,30 @@
           <table:table-cell office:value-type="string"><text:p>Usługa wdrożenia systemu obiegu dokumentów</text:p></table:table-cell>
           <table:table-cell office:value-type="float" office:value="10"><text:p>10</text:p></table:table-cell>
           <table:table-cell office:value-type="float" office:value="180"><text:p>180</text:p></table:table-cell>
-          <table:table-cell table:formula="of:=[.C6]*[.D6]" office:value-type="float" office:value="1800"><text:p>1800</text:p></table:table-cell>
+          <table:table-cell office:value-type="float" office:value="1800"><text:p>1800</text:p></table:table-cell>
         </table:table-row>
         <table:table-row>
           <table:table-cell office:value-type="float" office:value="2"><text:p>2</text:p></table:table-cell>
           <table:table-cell office:value-type="string"><text:p>Opieka serwisowa (miesiąc)</text:p></table:table-cell>
           <table:table-cell office:value-type="float" office:value="1"><text:p>1</text:p></table:table-cell>
           <table:table-cell office:value-type="float" office:value="450"><text:p>450</text:p></table:table-cell>
-          <table:table-cell table:formula="of:=[.C7]*[.D7]" office:value-type="float" office:value="450"><text:p>450</text:p></table:table-cell>
+          <table:table-cell office:value-type="float" office:value="450"><text:p>450</text:p></table:table-cell>
         </table:table-row>
         <table:table-row><table:table-cell/></table:table-row>
         <table:table-row>
           <table:table-cell/><table:table-cell/><table:table-cell/>
           <table:table-cell office:value-type="string"><text:p>Razem netto:</text:p></table:table-cell>
-          <table:table-cell table:formula="of:=SUM([.E6:.E7])" office:value-type="float" office:value="2250"><text:p>2250</text:p></table:table-cell>
+          <table:table-cell office:value-type="float" office:value="2250"><text:p>2250</text:p></table:table-cell>
         </table:table-row>
         <table:table-row>
           <table:table-cell/><table:table-cell/><table:table-cell/>
           <table:table-cell office:value-type="string"><text:p>VAT 23%:</text:p></table:table-cell>
-          <table:table-cell table:formula="of:=[.E9]*0.23" office:value-type="float" office:value="517.5"><text:p>517,50</text:p></table:table-cell>
+          <table:table-cell office:value-type="float" office:value="517.5"><text:p>517,50</text:p></table:table-cell>
         </table:table-row>
         <table:table-row>
           <table:table-cell/><table:table-cell/><table:table-cell/>
           <table:table-cell office:value-type="string"><text:p>Razem brutto:</text:p></table:table-cell>
-          <table:table-cell table:formula="of:=[.E9]+[.E10]" office:value-type="float" office:value="2767.5"><text:p>2767,50</text:p></table:table-cell>
+          <table:table-cell office:value-type="float" office:value="2767.5"><text:p>2767,50</text:p></table:table-cell>
         </table:table-row>
         <table:table-row><table:table-cell/></table:table-row>
         <table:table-row>
