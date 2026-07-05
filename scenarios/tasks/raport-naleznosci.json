@@ -1,0 +1,5 @@
+{"id":"raport-naleznosci","tytul":"Raport należności","harmonogram":"poniedziałek 8:00","flow":[
+ {"uri":"app://pc1/desktop/command/launch","payload":{"app":"chromium","url":"https://erp.jan.pl/faktury?status=nieoplacone"},"note":"pobierz nieopłacone faktury"},
+ {"uri":"scal://dane/query/merge","payload":{"klucz":"nr"},"note":"scal dane z kilku źródeł, usuń duplikaty"},
+ {"uri":"app://pc1/desktop/command/launch","payload":{"app":"libreoffice-calc","doc":"naleznosci.ods"},"note":"złóż zestawienie z terminami"},
+ {"uri":"log://cybermysz/raport-naleznosci/command/write","payload":{"efekt":"zestawienie należności gotowe"},"note":"zapisz wynik"}]}

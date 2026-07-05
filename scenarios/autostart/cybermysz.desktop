@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=CyberMysz — agent zadań biurowych
+Comment=Autonomicznie wykonuje zadania z katalogu po starcie systemu
+Exec=python3 %h/.cybermysz/scenarios/run.py
+Icon=utilities-terminal
+Terminal=false
+X-GNOME-Autostart-enabled=true
+Categories=Office;Utility;

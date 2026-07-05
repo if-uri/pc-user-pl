@@ -1,0 +1,6 @@
+{"id":"reklamacje","tytul":"Załóż zgłoszenie reklamacyjne","harmonogram":"on-nowe-zgloszenie","flow":[
+ {"uri":"mail://biuro/wiadomosc/query/read","note":"odczytaj opis problemu z maila"},
+ {"uri":"triage://zgloszenie/query/classify","note":"nadaj kategorię i priorytet (deterministycznie, SLA)"},
+ {"uri":"app://pc1/desktop/command/launch","payload":{"app":"chromium","url":"https://helpdesk.jan.pl"},"note":"otwórz system zgłoszeń"},
+ {"uri":"helpdesk://zgloszenia/command/create","payload":{"zrodlo":"mail"},"note":"uzupełnij formularz sprawy"},
+ {"uri":"log://cybermysz/reklamacje/command/write","payload":{"efekt":"zgłoszenie założone z kategorią i SLA"},"note":"zapisz wynik"}]}

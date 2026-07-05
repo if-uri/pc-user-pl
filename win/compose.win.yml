@@ -1,0 +1,51 @@
+# pc-user-pl-win — wirtualny Windows 11 pracownika, spięty z bliźniakiem (netpl).
+#
+# Do scenariuszy CROSS-SYSTEM: polskie aplikacje, które są Windows-only (Płatnik ZUS,
+# InsERT GT/Subiekt, Comarch Optima) żyją TUTAJ, a pulpit Linux (pc-user-pl) łączy się
+# z nimi przez RDP (remmina) — jak w prawdziwym biurze z serwerem Windows.
+#
+# Uruchomienie na komputerze pracownika z KVM:
+#   docker compose -f pc-user-pl/win/compose.win.yml up -d
+#   → pulpit Windows w przeglądarce:  http://localhost:8006  (noVNC/web)
+#   → RDP z pulpitu Linux (remmina):  windows-erp:3389
+#
+# Pierwszy start pobiera i instaluje Windows 11 (kilkanaście minut), potem oem/install.bat
+# ufa lokalnemu CA i instaluje aplikacje biurowe + agenta CyberMysz.
+services:
+  windows:
+    image: dockurr/windows
+    container_name: pc-user-pl-win
+    environment:
+      VERSION: "11"                       # Windows 11
+      LANGUAGE: "Polish"
+      REGION: "pl-PL"
+      KEYBOARD: "pl-PL"
+      USERNAME: "Jan Kowalski"
+      RAM_SIZE: "6G"
+      CPU_CORES: "4"
+      DISK_SIZE: "64G"
+    devices:
+      - /dev/kvm                          # wymaga sprzętowej wirtualizacji
+      - /dev/net/tun
+    cap_add: [NET_ADMIN]
+    ports:
+      - "8006:8006"                       # pulpit Windows przez web (noVNC)
+      - "3389:3389/tcp"                   # RDP (dla remmina z pulpitu Linux)
+      - "3389:3389/udp"
+    volumes:
+      - win-storage:/storage              # dysk maszyny (trwały)
+      - ./oem:/oem                        # provisioning: install.bat, uruchamiane na 1. starcie
+      - ../scenarios:/oem/scenarios:ro    # ten sam katalog CyberMysz co na Linuksie (agent + zadania)
+      - ../../net-user-pl/ca/out:/oem/ca:ro   # lokalny root CA (zaufanie HTTPS jak na produkcji)
+    stop_grace_period: 2m
+    restart: unless-stopped
+    networks:
+      netpl:
+        aliases: [windows-erp, pc-win]    # widoczny w bliźniaku jako 'windows-erp' (cel RDP)
+
+volumes:
+  win-storage:
+
+networks:
+  netpl:
+    external: true                        # sieć bliźniaka utworzona przez net-user-pl

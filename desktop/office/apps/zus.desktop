@@ -1,0 +1,6 @@
+[Desktop Entry]
+Type=Application
+Name=ZUS PUE
+Exec=firefox-esr https://www.zus.pl/pue
+Icon=preferences-system
+Categories=Office;

@@ -1,0 +1,12 @@
+{
+  "id": "mail-do-crm",
+  "tytul": "Przepisz dane z maila do CRM",
+  "harmonogram": "co 30 min",
+  "flow": [
+    {"uri": "mail://biuro/skrzynka/query/list",   "note": "sprawdź nowe wiadomości (leady)"},
+    {"uri": "mail://biuro/wiadomosc/query/read",  "note": "odczytaj dane kontaktowe z zapytania"},
+    {"uri": "app://pc1/desktop/command/launch",   "payload": {"app": "chromium", "url": "https://crm.jan.pl"}, "note": "otwórz panel CRM"},
+    {"uri": "crm://klienci/command/upsert",        "payload": {"zrodlo": "mail", "pole": "karta-klienta"}, "note": "uzupełnij kartę klienta"},
+    {"uri": "log://cybermysz/mail-do-crm/command/write", "payload": {"efekt": "lead przepisany do CRM"}, "note": "zapisz wynik"}
+  ]
+}

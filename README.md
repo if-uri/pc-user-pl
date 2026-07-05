@@ -47,21 +47,24 @@ document work, not just web pages:
 
 | Obszar | Aplikacje |
 |---|---|
-| Pakiet biurowy | **LibreOffice Writer / Calc / Impress** z polską lokalizacją, słownikiem (hunspell/hyphen/mythes) i fontami Carlito/Caladea (metrycznie zgodne z Calibri/Cambria — dokumenty z firm na MS Office renderują się poprawnie) |
+| Pakiet biurowy | **LibreOffice Writer / Calc / Impress / Base** z polską lokalizacją, słownikiem (hunspell/hyphen/mythes), fontami Carlito/Caladea; **Gnumeric** jako drugi arkusz |
 | Poczta | **Thunderbird** (PL) |
 | Księgowość | **GnuCash** — otwarty odpowiednik pakietu księgowego |
-| Codzienne narzędzia | Evince (PDF), PCManFM (pliki), Mousepad, Galculator, Xarchiver + 7z/zip, GIMP |
+| Praca z PDF/fakturami | **Okular** (podgląd+adnotacje), **pdfarranger** (łączenie/dzielenie), **qpdf**, **simple-scan** (skanowanie faktur) |
+| Praca z danymi | **Meld** (porównanie plików/eksportów — uzgadnianie), **KeePassXC** (menedżer haseł) |
+| Cross-system | **Remmina** (+RDP/VNC) → połączenie z serwerem **Windows** (Płatnik/InsERT/ERP), **FileZilla** (SFTP/FTP do serwera) |
+| Przeglądarki | Chromium + **Firefox ESR** (PL) — część e-usług pinuje jeden silnik |
+| Narzędzia | Evince, PCManFM, Mousepad, **Qalculate** (VAT/odsetki), **Flameshot** (zrzuty), Galculator, Xarchiver + 7z/zip, GIMP, **Java (JRE)** dla apletów gov |
 | Locale | `pl_PL.UTF-8`, strefa `Europe/Warsaw` |
 
-Aplikacje popularne w polskich firmach, które są Windows-only (Płatnik ZUS,
-InsERT, Comarch) albo web-only (KSeF, ePUAP), reprezentuje warstwa **webowa
-bliźniaka** — gotowe launchery (`office/apps/*.desktop`, także w menu openboksa
-pod prawym przyciskiem):
+Web-aplikacje biznesowe/rządowe — gotowe launchery (`office/apps/*.desktop`, także
+w menu openboksa): **mBank**, **Poczta firmowa**, **e-Urząd (gov.pl)**, **Telefon Jana**,
+**CRM firmowy**, **Panel sklepu**, **KSeF (e-Faktury)**, **ZUS PUE**, **ERP/Płatnik przez RDP**
+(→ `windows-erp`), oraz **CyberMysz — katalog zadań**.
 
-- **mBank — bankowość** → `https://mbank.pl`
-- **Poczta firmowa** → `https://poczta.jan.pl`
-- **e-Urząd** → `https://gov.pl`
-- **Telefon Jana** → `https://phone.jan.pl`
+Aplikacje Windows-only (Płatnik ZUS, InsERT/Subiekt, Comarch Optima) mają teraz
+**prawdziwy wirtualny Windows 11** — patrz [`win/`](win/) — a pulpit Linux łączy się z
+nimi przez RDP (`remmina`), jak w biurze z serwerem Windows.
 
 Przykładowe dokumenty leżą w `/root/Dokumenty` (`faktura-vat.fods` z formułami
 VAT 23%, `pismo-firmowe.fodt`, `kontrahenci.csv`) — od razu jest na czym testować
@@ -77,3 +80,36 @@ urirun run 'app://pc1/desktop/command/launch' --payload '{"app": "mbank"}'
 
 Uwaga: warstwa biurowa powiększa obraz o ~1.5 GB (LibreOffice+GIMP+GnuCash) —
 to celowy koszt wierności bliźniaka biurowego.
+
+## CyberMysz — scenariusze i autonomiczne wdrożenie
+
+Folder [`scenarios/`](scenarios/) to gotowy do wdrożenia **katalog zadań biurowych**
+(pakiety Biuro/Księgowość/E-commerce Start + 13 rozwiązań: mail→CRM, faktura PDF→ERP,
+raport dzienny, status zamówień, reklamacje…) oraz **agent, który wykonuje je
+autonomicznie po starcie systemu**:
+
+```bash
+python3 scenarios/run.py --list        # katalog (pakiety + zadania, efekt, oszczędność, cena)
+python3 scenarios/run.py --task mail-do-crm   # jedno zadanie (plan-only)
+scenarios/install.sh                   # wdróż: autostart z systemem (systemd --user / XDG)
+```
+
+Każdy krok zadania to adres URI dyspozycjonowany do lokalnego węzła urirun; cała praca
+zapisuje się jako `run://` i `log://`. Domyślnie **plan-only** (bezpiecznie), wykonanie
+włącza się świadomie (`install.sh --execute`). Pełny model wdrożenia i „Jak wdrożyć?" →
+[`scenarios/README.md`](scenarios/README.md).
+
+## Wirtualny Windows 11 (aplikacje Windows-only)
+
+Do scenariuszy **cross-system** — [`win/`](win/) uruchamia prawdziwy Windows 11 w
+kontenerze (QEMU/KVM), spięty z `netpl`, z zaufanym lokalnym CA i provisioningiem
+(`oem/install.bat`: pakiet biurowy, RDP, agent CyberMysz + autostart):
+
+```bash
+docker compose -f win/compose.win.yml up -d    # wymaga /dev/kvm
+# pulpit Windows:  http://localhost:8006   · RDP z pulpitu Linux: windows-erp:3389
+```
+
+Tam żyją Płatnik ZUS / InsERT / Comarch (instalowane z ich instalatorów), a pulpit Linux
+łączy się z nimi przez `remmina` — jak w prawdziwym biurze z serwerem Windows. Dzięki temu
+przepływ „faktura PDF → ERP" testuje się **realnie przez dwa systemy**.

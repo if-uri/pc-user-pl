@@ -1,0 +1,6 @@
+{"id":"test-formularza","tytul":"Sprawdź formularz lub panel WWW","harmonogram":"codziennie 7:30","flow":[
+ {"uri":"app://pc1/desktop/command/launch","payload":{"app":"chromium","url":"https://panel.jan.pl/formularz"},"note":"otwórz stronę do testu"},
+ {"uri":"kvm://pc1/input/command/type","payload":{"dane":"testowe"},"note":"wpisz dane testowe"},
+ {"uri":"kvm://pc1/ui/command/click-text","payload":{"text":"Wyślij"},"note":"kliknij przycisk"},
+ {"uri":"kvm://pc1/ui/query/verify","payload":{"text":"Dziękujemy"},"note":"sprawdź wynik (potwierdzenie)"},
+ {"uri":"log://cybermysz/test-formularza/command/write","payload":{"efekt":"test przeszedł/nie przeszedł"},"note":"zapisz wynik"}]}

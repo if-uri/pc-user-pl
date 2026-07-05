@@ -1,0 +1,6 @@
+{"id":"ceny-dostawcow","tytul":"Porównaj ceny w panelach dostawców","harmonogram":"co 4 godz","flow":[
+ {"uri":"app://pc1/desktop/command/launch","payload":{"app":"chromium","url":"https://dostawca-a.jan.pl"},"note":"otwórz panel dostawcy A"},
+ {"uri":"app://pc1/desktop/command/launch","payload":{"app":"chromium","url":"https://dostawca-b.jan.pl"},"note":"otwórz panel dostawcy B"},
+ {"uri":"audit://zamowienie/query/consistency","note":"porównaj ceny (weryfikacja wartości, nie zapisu)"},
+ {"uri":"app://pc1/desktop/command/launch","payload":{"app":"libreoffice-calc","doc":"ceny.ods"},"note":"zapisz różnice w arkuszu"},
+ {"uri":"log://cybermysz/ceny-dostawcow/command/write","payload":{"efekt":"zestawienie różnic cen"},"note":"zapisz wynik"}]}

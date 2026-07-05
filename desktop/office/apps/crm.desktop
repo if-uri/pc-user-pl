@@ -1,0 +1,6 @@
+[Desktop Entry]
+Type=Application
+Name=CRM firmowy
+Exec=chromium --no-sandbox --app=https://crm.jan.pl
+Icon=x-office-address-book
+Categories=Office;

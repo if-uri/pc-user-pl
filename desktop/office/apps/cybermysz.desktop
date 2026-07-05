@@ -1,0 +1,6 @@
+[Desktop Entry]
+Type=Application
+Name=CyberMysz — katalog zadań
+Exec=xterm -e "python3 /opt/cybermysz/scenarios/run.py --list; read"
+Icon=utilities-terminal
+Categories=Office;Utility;

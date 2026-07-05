@@ -1,0 +1,14 @@
+{
+  "id": "faktura-pdf-do-erp",
+  "tytul": "Wprowadź fakturę z PDF do ERP",
+  "harmonogram": "on-nowa-faktura",
+  "flow": [
+    {"uri": "app://pc1/desktop/command/launch",  "payload": {"app": "okular", "doc": "faktura.pdf"}, "note": "otwórz fakturę PDF"},
+    {"uri": "kvm://pc1/ui/query/verify",         "payload": {"text": "Razem brutto"}, "note": "OCR: znajdź kwotę brutto"},
+    {"uri": "audit://faktura/query/consistency", "note": "sprawdź spójność: pozycje sumują się, VAT 23%"},
+    {"uri": "recon://ksiegowosc/faktury/query/reconcile", "note": "uzgodnij fakturę z przelewem (wykryj rozbieżność)"},
+    {"uri": "app://pc1/desktop/command/launch",  "payload": {"app": "remmina", "target": "windows-erp"}, "note": "RDP do serwera Windows z programem ERP"},
+    {"uri": "erp://ksiegowosc/dokument/command/wprowadz", "payload": {"typ": "faktura-zakupu"}, "note": "wpisz wartości do formularza ERP"},
+    {"uri": "log://cybermysz/faktura-pdf-do-erp/command/write", "payload": {"efekt": "faktura zaksięgowana, spójność sprawdzona"}, "note": "zapisz wynik"}
+  ]
+}

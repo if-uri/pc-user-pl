@@ -1,0 +1,6 @@
+{"id":"hr-kandydaci","tytul":"Uzupełnij status kandydatów HR","harmonogram":"co 2 godz","flow":[
+ {"uri":"mail://biuro/skrzynka/query/list","note":"sprawdź zgłoszenia kandydatów"},
+ {"uri":"format://rekord/query/normalize","payload":{"pola":["telefon","data"]},"note":"znormalizuj dane kontaktowe"},
+ {"uri":"app://pc1/desktop/command/launch","payload":{"app":"chromium","url":"https://ats.jan.pl"},"note":"otwórz ATS"},
+ {"uri":"hr://kandydaci/command/upsert","payload":{"status":"nowy"},"note":"przenieś dane i ustaw status"},
+ {"uri":"log://cybermysz/hr-kandydaci/command/write","payload":{"efekt":"karty kandydatów uzupełnione"},"note":"zapisz wynik"}]}

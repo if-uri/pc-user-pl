@@ -41,6 +41,30 @@ ENV LANG=pl_PL.UTF-8 \
     LC_ALL=pl_PL.UTF-8 \
     TZ=Europe/Warsaw
 
+# ── Office-tools layer ──────────────────────────────────────────────────────────
+# What makes COMPLEX, cross-app, cross-system daily scenarios testable — the tools a
+# Polish office worker reaches for beyond the core suite:
+#   - okular + pdfarranger + qpdf — read/annotate/merge/split invoices (the daily PDF grind);
+#   - simple-scan — scan a paper invoice (perceive → OCR → reconcile);
+#   - meld — compare two files/exports side by side (reconciliation by eye);
+#   - keepassxc — the password manager every office actually runs;
+#   - remmina (+RDP) — connect to the WINDOWS server where Płatnik/InsERT live
+#     (this is the bridge to the pc-user-pl-win VM — cross-SYSTEM scenarios);
+#   - filezilla — SFTP/FTP to the company server (upload declarations/backups);
+#   - firefox-esr — a second browser (some gov e-services pin to one engine);
+#   - libreoffice-base — the database/Access stand-in; gnumeric — a second spreadsheet;
+#   - qalculate-gtk — VAT/interest maths; flameshot — screenshots for tickets;
+#   - default-jre — Java for gov applets (ePUAP/e-Deklaracje still ship them).
+RUN apt-get update && apt-get install -y --no-install-recommends \
+      okular pdfarranger qpdf simple-scan \
+      meld keepassxc \
+      remmina remmina-plugin-rdp remmina-plugin-vnc \
+      filezilla firefox-esr firefox-esr-l10n-pl \
+      libreoffice-base gnumeric \
+      qalculate-gtk flameshot \
+      default-jre-headless \
+    && rm -rf /var/lib/apt/lists/*
+
 # Twin web apps (valid HTTPS thanks to setup-ca) + a human-friendly openbox menu
 # + sample documents every Polish office recognises (invoice, letterhead, CRM CSV).
 # The .desktop entries also make these launchable through the mesh:
@@ -48,6 +72,13 @@ ENV LANG=pl_PL.UTF-8 \
 COPY office/apps/ /usr/share/applications/
 COPY office/menu.xml /etc/xdg/openbox/menu.xml
 COPY office/samples/ /root/Dokumenty/
+
+# ── CyberMysz — autonomiczny agent zadań biurowych ─────────────────────────────
+# Katalog scenariuszy (pakiety + zadania) + agent, który wykonuje je autonomicznie
+# po starcie. Na pulpicie: „CyberMysz — katalog zadań". Sam katalog jest MONTOWANY
+# w compose.pc.yml (../scenarios → /opt/cybermysz/scenarios), a w realnym wdrożeniu
+# agent startuje z systemem (scenarios/install.sh → systemd --user / XDG autostart).
+RUN mkdir -p /opt/cybermysz
 
 COPY setup-ca.sh /usr/local/bin/setup-ca
 COPY pc-entrypoint.sh /usr/local/bin/pc-entrypoint
