@@ -6,7 +6,7 @@ the KVM connector, joined to the virtual internet and trusting its local CA — 
 Chromium sees valid HTTPS on `mbank.pl` / `phone.jan.pl` just like the real web.
 Everything Jan does is driven through the urirun mesh (`kvm://`, `app://`).
 
-Trio: [net-user-pl](https://github.com/if-uri/net-user-pl) (network) · **pc-user-pl** (computer) · [mobile-user-pl](https://github.com/if-uri/mobile-user-pl) (phone). Orchestrated by `pc1`.
+Trio: [net-user-pl](https://github.com/digitaltwin-run/net-user-pl) (network) · **pc-user-pl** (computer) · [mobile-user-pl](https://github.com/digitaltwin-run/mobile-user-pl) (phone). Orchestrated by [`pc1`](https://github.com/digitaltwin-run/pc1).
 
 ## Build
 
